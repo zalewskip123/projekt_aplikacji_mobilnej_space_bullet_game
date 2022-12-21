@@ -7,7 +7,7 @@
     android:backgroundTint="#B50505">
 
     <Button
-        android:id="@+id/button11"
+        android:id="@+id/buttonColor4"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#5F088E"
@@ -15,7 +15,7 @@
         tools:layout_editor_absoluteY="382dp" />
 
     <Button
-        android:id="@+id/button12"
+        android:id="@+id/buttonColor5"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#2196F3"
@@ -23,7 +23,7 @@
         tools:layout_editor_absoluteY="382dp" />
 
     <Button
-        android:id="@+id/button13"
+        android:id="@+id/buttonColor6"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#4CAF50"
@@ -31,7 +31,7 @@
         tools:layout_editor_absoluteY="382dp" />
 
     <Button
-        android:id="@+id/button14"
+        android:id="@+id/buttonColor7"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#F44336"
@@ -39,7 +39,7 @@
         tools:layout_editor_absoluteY="530dp" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/buttonColor8"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#FFC107"
@@ -47,14 +47,7 @@
         tools:layout_editor_absoluteY="530dp" />
 
     <Button
-        android:id="@+id/button16"
-        android:layout_width="100dp"
-        android:layout_height="105dp"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="242dp" />
-
-    <Button
-        android:id="@+id/button9"
+        android:id="@+id/buttonColor2"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#6C6C6C"
@@ -62,7 +55,7 @@
         tools:layout_editor_absoluteY="242dp" />
 
     <Button
-        android:id="@+id/button10"
+        android:id="@+id/buttonColor3"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#040101"
@@ -70,7 +63,7 @@
         tools:layout_editor_absoluteY="242dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/exitCustom"
         android:layout_width="65dp"
         android:layout_height="80dp"
         android:backgroundTint="#00FFFFFF"
@@ -85,7 +78,7 @@
         tools:layout_editor_absoluteY="635dp" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/spaseShip"
         android:layout_width="193dp"
         android:layout_height="177dp"
         tools:layout_editor_absoluteX="109dp"
@@ -93,7 +86,7 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/buttonColor9"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#FF5722"
@@ -101,7 +94,7 @@
         tools:layout_editor_absoluteY="530dp" />
 
     <Button
-        android:id="@+id/button17"
+        android:id="@+id/buttonColor1"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#F8E7E7"
