@@ -40,8 +40,8 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
     {
         if(v.getId() == changeMenuToPlay.getId())
         {
-            //Intent intent = new Intent(this, Menu_play.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this, Game.class);
+            startActivity(intent);
         }
         else if(v.getId() == changeMenuToCustom.getId())
         {
