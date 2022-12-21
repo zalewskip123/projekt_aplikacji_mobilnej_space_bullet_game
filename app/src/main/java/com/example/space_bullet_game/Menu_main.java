@@ -32,6 +32,7 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
 
         changeMenuToCredits = (Button) findViewById(R.id.button3);
         changeMenuToCredits.setOnClickListener(this);
+
     }
 
     @Override
@@ -44,8 +45,8 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
         }
         else if(v.getId() == changeMenuToCustom.getId())
         {
-            //Intent intent = new Intent(this, Menu_custom.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this, Menu_Custom.class);
+            startActivity(intent);
         }
         else if(v.getId() == changeMenuToScoreboard.getId())
         {
