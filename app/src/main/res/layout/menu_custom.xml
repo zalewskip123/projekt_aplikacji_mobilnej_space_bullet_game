@@ -10,57 +10,91 @@
         android:id="@+id/buttonColor4"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginEnd="36dp"
         android:backgroundTint="#5F088E"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="382dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonColor5"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
 
     <Button
         android:id="@+id/buttonColor5"
         android:layout_width="100dp"
         android:layout_height="105dp"
         android:backgroundTint="#2196F3"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="382dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
 
     <Button
         android:id="@+id/buttonColor6"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginStart="40dp"
         android:backgroundTint="#4CAF50"
-        tools:layout_editor_absoluteX="295dp"
-        tools:layout_editor_absoluteY="382dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonColor5"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.61" />
 
     <Button
         android:id="@+id/buttonColor7"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="36dp"
         android:backgroundTint="#F44336"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="530dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonColor8"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonColor4"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonColor8"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#FFC107"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="530dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/buttonColor5"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonColor2"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#6C6C6C"
-        tools:layout_editor_absoluteX="155dp"
-        tools:layout_editor_absoluteY="242dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonColor5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/buttonColor3"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#040101"
-        tools:layout_editor_absoluteX="295dp"
-        tools:layout_editor_absoluteY="242dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonColor6"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonColor2"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 
     <Button
         android:id="@+id/exitCustom"
@@ -74,30 +108,49 @@
         app:icon="@android:drawable/ic_delete"
         app:iconPadding="0dp"
         app:iconTint="@color/design_default_color_error"
-        tools:layout_editor_absoluteX="330dp"
-        tools:layout_editor_absoluteY="635dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.953"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.989" />
 
     <ImageView
         android:id="@+id/spaseShip"
         android:layout_width="193dp"
         android:layout_height="177dp"
-        tools:layout_editor_absoluteX="109dp"
-        tools:layout_editor_absoluteY="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.064"
         tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/buttonColor9"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:backgroundTint="#FF5722"
-        tools:layout_editor_absoluteX="295dp"
-        tools:layout_editor_absoluteY="530dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/buttonColor8"
+        app:layout_constraintTop_toBottomOf="@+id/buttonColor6"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/buttonColor1"
         android:layout_width="100dp"
         android:layout_height="105dp"
+        android:layout_marginEnd="36dp"
+        android:layout_marginBottom="32dp"
         android:backgroundTint="#F8E7E7"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="242dp" />
+        app:layout_constraintBottom_toTopOf="@+id/buttonColor4"
+        app:layout_constraintEnd_toStartOf="@+id/buttonColor2"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0" />
 </androidx.constraintlayout.widget.ConstraintLayout>
