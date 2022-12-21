@@ -5,16 +5,12 @@ import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.view.View;
-
-import android.widget.Button;
 
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+public class MainActivity extends AppCompatActivity {
 
-    private Button changeStartToMenu;
     Timer timer;
 
 
@@ -23,24 +19,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_start);
 
-        changeStartToMenu = (Button) findViewById(R.id.button20);
-        changeStartToMenu.setOnClickListener(this);
-
-        try{
-            Thread.sleep(3000);
-        }catch(Exception e){
-            //print error here
-        }finally {
-            Intent intent = new Intent(this, Menu_main.class);
-            startActivity(intent);
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        if (v.getId() == changeStartToMenu.getId()) {
-            Intent intent = new Intent(this, Menu_main.class);
-            startActivity(intent);
-        }
+        timer = new Timer();
+        Intent intent = new Intent(this, Menu_main.class);
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                startActivity(intent);
+            }
+        }, 5000);
     }
 }
