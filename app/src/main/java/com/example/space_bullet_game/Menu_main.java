@@ -55,8 +55,8 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
         }
         else if(v.getId() == changeMenuToCredits.getId())
         {
-            //Intent intent = new Intent(this, Menu_credits.class);
-            //startActivity(intent);
+            Intent intent = new Intent(this, Menu_Credits.class);
+            startActivity(intent);
         }
     }
 }
