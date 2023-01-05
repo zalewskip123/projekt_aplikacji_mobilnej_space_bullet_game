@@ -24,12 +24,19 @@ public class Game extends AppCompatActivity {
     private int layoutHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private Button[] stars = new Button[5];
     private List<Integer> savedRandNumbers = new ArrayList<>();
-    private float savedHeight;
+    private boolean firstPress = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
+
+        //Stars
+        stars[0] = (Button) findViewById(R.id.star1);
+        stars[1] = (Button) findViewById(R.id.star2);
+        stars[2] = (Button) findViewById(R.id.star3);
+        stars[3] = (Button) findViewById(R.id.star4);
+        stars[4] = (Button) findViewById(R.id.star5);
 
         //Starship player control
         starShip = (Button) findViewById(R.id.bShip);
@@ -40,6 +47,11 @@ public class Game extends AppCompatActivity {
                 switch (event.getAction()) {
                     case MotionEvent.ACTION_DOWN:
                         dX = view.getX() - event.getRawX();
+                        if (!firstPress)
+                        {
+                            randStar();
+                            firstPress = true;
+                        }
                         break;
                     case MotionEvent.ACTION_MOVE:
                         int leftSide = (layoutWidth * 12)/100;
@@ -61,29 +73,24 @@ public class Game extends AppCompatActivity {
                 return false;
             }
         });
-
-        //Stars
-        stars[0] = (Button) findViewById(R.id.star1);
-        stars[1] = (Button) findViewById(R.id.star2);
-        stars[2] = (Button) findViewById(R.id.star3);
-        stars[3] = (Button) findViewById(R.id.star4);
-        stars[4] = (Button) findViewById(R.id.star5);
-        savedHeight = stars[0].getY();
-        randStar();
     }
 
+    //Generate random number of star
     private void randStar() {
         int randNumber = (int)Math.floor(Math.random()*5);
         while(savedRandNumbers.contains(randNumber)) {
-            randNumber = (int)Math.floor(Math.random()*5);
-            if (savedRandNumbers.size() == 5) {
-                savedRandNumbers.clear();
-                continue;
+            if (savedRandNumbers.size() == 5)
+            {
+                Timer timer = new Timer();
+                timer.schedule(new TimerTask() {
+                    public void run() {
+                        savedRandNumbers.clear();
+                    }
+                }, 800);
             }
+            randNumber = (int)Math.floor(Math.random()*5);
         }
         savedRandNumbers.add(randNumber);
-        System.out.println(randNumber);
-        //stars[randNumber].setVisibility(View.VISIBLE);
         starRun(randNumber);
         Timer timer = new Timer();
         timer.schedule(new TimerTask() {
@@ -93,19 +100,18 @@ public class Game extends AppCompatActivity {
         }, 2500);
     }
 
+    //Movement of star
     private void starRun(int id) {
         if (stars[id].getY() < layoutHeight) {
             Timer timer = new Timer();
-            stars[id].setY(stars[id].getY() + 6);
+            stars[id].setY(stars[id].getY() + 20);
             timer.schedule(new TimerTask() {
                 public void run() {
                     starRun(id);
                 }
-            }, 10);
+            }, 50);
         } else if (savedRandNumbers.contains(id)) {
-          //  stars[id].setVisibility(View.INVISIBLE);
-          //  savedRandNumbers.remove(id);
-            stars[id].setY(savedHeight);
+            stars[id].setY((layoutHeight*14/100));
         }
     }
 }
