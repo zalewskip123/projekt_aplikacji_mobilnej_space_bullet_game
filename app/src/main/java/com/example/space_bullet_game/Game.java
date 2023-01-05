@@ -76,6 +76,10 @@ public class Game extends AppCompatActivity {
         int randNumber = (int)Math.floor(Math.random()*5);
         while(savedRandNumbers.contains(randNumber)) {
             randNumber = (int)Math.floor(Math.random()*5);
+            if (savedRandNumbers.size() == 5) {
+                savedRandNumbers.clear();
+                continue;
+            }
         }
         savedRandNumbers.add(randNumber);
         System.out.println(randNumber);

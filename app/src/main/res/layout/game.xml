@@ -25,10 +25,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginBottom="42dp"
         android:text="Lives 1/3"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/star1"
         app:layout_constraintEnd_toStartOf="@+id/button9"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -39,10 +37,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="37dp"
         android:layout_marginEnd="13dp"
-        android:layout_marginBottom="42dp"
         android:text="0002323"
         android:textSize="20sp"
-        app:layout_constraintBottom_toTopOf="@+id/star5"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button9"
         app:layout_constraintTop_toTopOf="parent" />
@@ -82,24 +78,6 @@
         app:layout_constraintVertical_bias="0.908" />
 
     <Button
-        android:id="@+id/star1"
-        android:layout_width="69dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="565dp"
-        android:background="#00FFFFFF"
-        android:visibility="visible"
-        app:icon="@android:drawable/btn_star_big_on"
-        app:iconSize="40dp"
-        app:iconTint="#0003A9F4"
-        app:iconTintMode="src_atop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.046"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        app:layout_constraintVertical_bias="0.157" />
-
-    <Button
         android:id="@+id/star2"
         android:layout_width="69dp"
         android:layout_height="60dp"
@@ -112,6 +90,23 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.274"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.157" />
+
+    <Button
+        android:id="@+id/star1"
+        android:layout_width="69dp"
+        android:layout_height="60dp"
+        android:background="#00FFFFFF"
+        android:visibility="visible"
+        app:icon="@android:drawable/btn_star_big_on"
+        app:iconSize="40dp"
+        app:iconTint="#0003A9F4"
+        app:iconTintMode="src_atop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.157" />
@@ -152,8 +147,7 @@
     <Button
         android:id="@+id/star5"
         android:layout_width="69dp"
-        android:layout_height="0dp"
-        android:layout_marginBottom="565dp"
+        android:layout_height="60dp"
         android:background="#00FFFFFF"
         android:visibility="visible"
         app:icon="@android:drawable/btn_star_big_on"
@@ -164,7 +158,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView12"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.157" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
