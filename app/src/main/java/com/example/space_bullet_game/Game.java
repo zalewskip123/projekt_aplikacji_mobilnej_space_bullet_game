@@ -6,11 +6,13 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
 import android.webkit.ConsoleMessage;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +27,8 @@ public class Game extends AppCompatActivity {
     private Button[] stars = new Button[5];
     private List<Integer> savedRandNumbers = new ArrayList<>();
     private boolean firstPress = false;
+    private TextView scoresSh;
+    private int scoresValue = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +77,17 @@ public class Game extends AppCompatActivity {
                 return false;
             }
         });
+
+        scoresSh = (TextView) findViewById(R.id.scoresView);
+        scoresShow();
+        /*
+        Timer timer = new Timer();
+        timer.schedule(new TimerTask() {
+            public void run() {
+                scoresSh.setText(Integer.toString(scoresValue));
+            }
+        }, 1500);
+        */
     }
 
     //Generate random number of star
@@ -105,7 +120,9 @@ public class Game extends AppCompatActivity {
         if (stars[id].getY() < layoutHeight) {
             if (stars[id].getY() + ((85 * stars[id].getHeight())/100) > starShip.getTop() && stars[id].getLeft() < starShip.getX() + ((55 * starShip.getWidth())/100) && stars[id].getRight() > starShip.getX() + ((45 * starShip.getWidth())/100))
             {
+                scoresValue += 10;
                 stars[id].setY((layoutHeight*14/100));
+                System.out.println(scoresValue);
                 return;
             }
             Timer timer = new Timer();
@@ -118,5 +135,15 @@ public class Game extends AppCompatActivity {
         } else if (savedRandNumbers.contains(id)) {
             stars[id].setY((layoutHeight*14/100));
         }
+    }
+
+    private void scoresShow() {
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                scoresSh.setText(Integer.toString(scoresValue));
+                scoresShow();
+            }
+        }, 60);
     }
 }
