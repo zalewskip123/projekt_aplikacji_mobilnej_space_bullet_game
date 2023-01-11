@@ -86,7 +86,7 @@ public class Game extends AppCompatActivity {
                     public void run() {
                         savedRandNumbers.clear();
                     }
-                }, 800);
+                }, 1500);
             }
             randNumber = (int)Math.floor(Math.random()*5);
         }
@@ -103,13 +103,18 @@ public class Game extends AppCompatActivity {
     //Movement of star
     private void starRun(int id) {
         if (stars[id].getY() < layoutHeight) {
+            if (stars[id].getY() + ((85 * stars[id].getHeight())/100) > starShip.getTop() && stars[id].getLeft() < starShip.getX() + ((55 * starShip.getWidth())/100) && stars[id].getRight() > starShip.getX() + ((45 * starShip.getWidth())/100))
+            {
+                stars[id].setY((layoutHeight*14/100));
+                return;
+            }
             Timer timer = new Timer();
             stars[id].setY(stars[id].getY() + 20);
             timer.schedule(new TimerTask() {
                 public void run() {
                     starRun(id);
                 }
-            }, 50);
+            }, 60);
         } else if (savedRandNumbers.contains(id)) {
             stars[id].setY((layoutHeight*14/100));
         }
