@@ -27,9 +27,9 @@ public class Game extends AppCompatActivity {
     private Button[] stars = new Button[5];
     private List<Integer> savedRandNumbers = new ArrayList<>();
     private boolean firstPress = false, lose = false, pauseClicked = false;
-    private TextView scoresSh, healthSh;
+    private TextView scoresSh, healthSh, gameOverSh;
     private int scoresValue = 0, healthValue = 3;
-    private Thread threadShowHealthAndScores;
+    private Thread threadShowHealthAndScores, pauseThread;
     private float yPausePlay;
 
     @Override
@@ -56,11 +56,12 @@ public class Game extends AppCompatActivity {
                         if (!firstPress)
                         {
                             randStar();
+                            pauseThread.start();
                             firstPress = true;
                         }
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        if (!lose) {
+                        if (!lose && !pauseClicked) {
                             int leftSide = (layoutWidth * 12)/100;
                             int rightSide = layoutWidth - leftSide;
                             if (event.getRawX() >= leftSide && event.getRawX() <= rightSide) {
@@ -85,6 +86,9 @@ public class Game extends AppCompatActivity {
         scoresSh = (TextView) findViewById(R.id.scoresView);
         healthSh = (TextView) findViewById(R.id.healthView);
 
+        gameOverSh = (TextView) findViewById(R.id.gameOver);
+        gameOverSh.setY(layoutHeight);
+
         threadShowHealthAndScores = new Thread() {
             @Override
             public void run() {
@@ -94,6 +98,8 @@ public class Game extends AppCompatActivity {
                         scoresSh.setText(String.format("%05d",scoresValue));
                         if (healthValue > 0) healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
                         else {
+                            healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
+                            gameOverSh.setY((layoutHeight*40)/100);
                             lose = true;
                         }
                     } catch (Exception e) {
@@ -109,49 +115,60 @@ public class Game extends AppCompatActivity {
         play = (Button) findViewById(R.id.playB);
         play.setY(layoutHeight);
         yPausePlay = pause.getY() + layoutHeight*2/100;
-        pause.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (!pauseClicked) {
-                    pauseClicked = true;
-                    play.setY(yPausePlay);
-                    pause.setY(layoutHeight);
-                    //threadShowHealthAndScores.interrupt();
-                }
-            }
-        });
 
-        play.setOnClickListener(new View.OnClickListener() {
+        pauseThread = new Thread() {
             @Override
-            public void onClick(View view) {
-                if (pauseClicked) {
-                    pauseClicked = false;
-                    play.setY(layoutHeight);
-                    pause.setY(yPausePlay);
-                    //threadShowHealthAndScores.start();
+            public void run() {
+                while(!isInterrupted()) {
+                    try {
+                        Thread.sleep(500);
+                        pause = (Button) findViewById(R.id.pauseB);
+                        play = (Button) findViewById(R.id.playB);
+                        pause.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                pauseClicked = true;
+                                play.setY(yPausePlay);
+                                pause.setY(layoutHeight);
+                            }
+                        });
+
+                        play.setOnClickListener(new View.OnClickListener() {
+                            @Override
+                            public void onClick(View view) {
+                                pauseClicked = false;
+                                play.setY(layoutHeight);
+                                pause.setY(yPausePlay);
+                            }
+                        });
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
-        });
+        };
     }
 
     //Generate random number of star
     private void randStar() {
         if (!lose) {
-            int randNumber = (int)Math.floor(Math.random()*5);
-            while(savedRandNumbers.contains(randNumber)) {
-                if (savedRandNumbers.size() == 5)
-                {
-                    Timer timer = new Timer();
-                    timer.schedule(new TimerTask() {
-                        public void run() {
-                            savedRandNumbers.clear();
-                        }
-                    }, 1500);
+            if (!pauseClicked) {
+                int randNumber = (int)Math.floor(Math.random()*5);
+                while(savedRandNumbers.contains(randNumber)) {
+                    if (savedRandNumbers.size() == 5)
+                    {
+                        Timer timer = new Timer();
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                savedRandNumbers.clear();
+                            }
+                        }, 1500);
+                    }
+                    randNumber = (int)Math.floor(Math.random()*5);
                 }
-                randNumber = (int)Math.floor(Math.random()*5);
+                savedRandNumbers.add(randNumber);
+                starRun(randNumber);
             }
-            savedRandNumbers.add(randNumber);
-            starRun(randNumber);
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 public void run() {
@@ -172,7 +189,7 @@ public class Game extends AppCompatActivity {
                     return;
                 }
                 Timer timer = new Timer();
-                stars[id].setY(stars[id].getY() + 20);
+                if (!pauseClicked) stars[id].setY(stars[id].getY() + 20);
                 timer.schedule(new TimerTask() {
                     public void run() {
                         starRun(id);

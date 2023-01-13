@@ -51,7 +51,7 @@
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="479dp"
         android:background="#00FFFFFF"
-        android:insetLeft="13dp"
+        android:insetLeft="0dp"
         app:icon="@android:drawable/ic_media_pause"
         app:iconSize="50dp"
         app:iconTint="@color/black"
@@ -68,7 +68,7 @@
         android:layout_marginEnd="2dp"
         android:layout_marginBottom="479dp"
         android:background="#00FFFFFF"
-        android:insetLeft="13dp"
+        android:insetLeft="0dp"
         android:visibility="visible"
         app:icon="@android:drawable/ic_media_play"
         app:iconSize="50dp"
@@ -180,5 +180,18 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.157" />
+
+    <TextView
+        android:id="@+id/gameOver"
+        android:layout_width="295dp"
+        android:layout_height="102dp"
+        android:text="GAME OVER"
+        android:textAlignment="center"
+        android:textSize="48sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
