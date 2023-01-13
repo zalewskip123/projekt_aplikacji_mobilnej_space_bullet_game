@@ -47,6 +47,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_white);
                 buttonWhite.setImageResource(R.drawable.secect);
             }
         });
@@ -55,6 +56,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_gray);
                 buttonGray.setImageResource(R.drawable.secect);
             }
         });
@@ -63,6 +65,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_black);
                 buttonBlack.setImageResource(R.drawable.secect);
             }
         });
@@ -71,6 +74,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_purple);
                 buttonPurple.setImageResource(R.drawable.secect);
             }
         });
@@ -79,6 +83,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_blue);
                 buttonBlue.setImageResource(R.drawable.secect);
             }
         });
@@ -87,6 +92,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_green);
                 buttonGreen.setImageResource(R.drawable.secect);
             }
         });
@@ -95,6 +101,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_red);
                 buttonRed.setImageResource(R.drawable.secect);
             }
         });
@@ -103,6 +110,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_yellow);
                 buttonYellow.setImageResource(R.drawable.secect);
             }
         });
@@ -111,6 +119,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                preview.setImageResource(R.drawable.spaceship_orange);
                 buttonOrange.setImageResource(R.drawable.secect);
             }
         });
