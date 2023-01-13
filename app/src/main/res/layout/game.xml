@@ -23,11 +23,11 @@
         android:id="@+id/healthView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="10dp"
+        android:layout_marginTop="36dp"
         android:text="Lives 3/3"
         android:textSize="20sp"
-        app:layout_constraintEnd_toStartOf="@+id/pauseB"
+        app:layout_constraintEnd_toStartOf="@+id/scoresView"
+        app:layout_constraintHorizontal_bias="0.102"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -35,67 +35,25 @@
         android:id="@+id/scoresView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="37dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginTop="36dp"
+        android:layout_marginEnd="28dp"
         android:text="00000"
         android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/pauseB"
         app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/pauseB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="479dp"
-        android:background="#00FFFFFF"
-        android:insetLeft="0dp"
-        app:icon="@android:drawable/ic_media_pause"
-        app:iconSize="50dp"
-        app:iconTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/bShip"
-        app:layout_constraintEnd_toStartOf="@+id/scoresView"
-        app:layout_constraintStart_toEndOf="@+id/healthView"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <Button
-        android:id="@+id/playB"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="2dp"
-        android:layout_marginBottom="479dp"
-        android:background="#00FFFFFF"
-        android:insetLeft="0dp"
-        android:visibility="visible"
-        app:icon="@android:drawable/ic_media_play"
-        app:iconSize="50dp"
-        app:iconTint="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/bShip"
-        app:layout_constraintEnd_toStartOf="@+id/scoresView"
-        app:layout_constraintHorizontal_bias="0.56"
-        app:layout_constraintStart_toEndOf="@+id/healthView"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/bShip"
-        android:layout_width="107dp"
-        android:layout_height="0dp"
+        android:layout_width="93dp"
+        android:layout_height="94dp"
         android:layout_marginBottom="57dp"
         android:background="#00FFFFFF"
-        android:rotation="-90"
-        app:icon="@android:drawable/ic_menu_send"
+        android:foreground="@drawable/spaceship_red"
         app:iconSize="100dp"
-        app:iconTint="#03A9F4"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.49"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pauseB"
-        app:layout_constraintVertical_bias="0.908" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/star2"

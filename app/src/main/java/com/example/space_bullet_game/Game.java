@@ -5,6 +5,8 @@ import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.MotionEvent;
@@ -21,16 +23,15 @@ import java.util.TimerTask;
 
 public class Game extends AppCompatActivity {
 
-    private Button starShip, pause, play;
+    private Button starShip;
     private int layoutWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
     private int layoutHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private Button[] stars = new Button[5];
     private List<Integer> savedRandNumbers = new ArrayList<>();
-    private boolean firstPress = false, lose = false, pauseClicked = false;
+    private boolean firstPress = false, lose = false;
     private TextView scoresSh, healthSh, gameOverSh;
     private int scoresValue = 0, healthValue = 3;
-    private Thread threadShowHealthAndScores, pauseThread;
-    private float yPausePlay;
+    private Thread threadShowHealthAndScores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,10 @@ public class Game extends AppCompatActivity {
 
         //Starship player control
         starShip = (Button) findViewById(R.id.bShip);
+        Drawable icon = getResources().getDrawable(R.drawable.spaceship_green);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            starShip.setForeground(icon);
+        }
         starShip.setOnTouchListener(new View.OnTouchListener() {
             float dX;
             @Override
@@ -56,12 +61,11 @@ public class Game extends AppCompatActivity {
                         if (!firstPress)
                         {
                             randStar();
-                            pauseThread.start();
                             firstPress = true;
                         }
                         break;
                     case MotionEvent.ACTION_MOVE:
-                        if (!lose && !pauseClicked) {
+                        if (!lose) {
                             int leftSide = (layoutWidth * 12)/100;
                             int rightSide = layoutWidth - leftSide;
                             if (event.getRawX() >= leftSide && event.getRawX() <= rightSide) {
@@ -110,65 +114,26 @@ public class Game extends AppCompatActivity {
         };
 
         threadShowHealthAndScores.start();
-
-        pause = (Button) findViewById(R.id.pauseB);
-        play = (Button) findViewById(R.id.playB);
-        play.setY(layoutHeight);
-        yPausePlay = pause.getY() + layoutHeight*2/100;
-
-        pauseThread = new Thread() {
-            @Override
-            public void run() {
-                while(!isInterrupted()) {
-                    try {
-                        Thread.sleep(500);
-                        pause = (Button) findViewById(R.id.pauseB);
-                        play = (Button) findViewById(R.id.playB);
-                        pause.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                pauseClicked = true;
-                                play.setY(yPausePlay);
-                                pause.setY(layoutHeight);
-                            }
-                        });
-
-                        play.setOnClickListener(new View.OnClickListener() {
-                            @Override
-                            public void onClick(View view) {
-                                pauseClicked = false;
-                                play.setY(layoutHeight);
-                                pause.setY(yPausePlay);
-                            }
-                        });
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        };
     }
 
     //Generate random number of star
     private void randStar() {
         if (!lose) {
-            if (!pauseClicked) {
-                int randNumber = (int)Math.floor(Math.random()*5);
-                while(savedRandNumbers.contains(randNumber)) {
-                    if (savedRandNumbers.size() == 5)
-                    {
-                        Timer timer = new Timer();
-                        timer.schedule(new TimerTask() {
-                            public void run() {
-                                savedRandNumbers.clear();
-                            }
-                        }, 1500);
-                    }
-                    randNumber = (int)Math.floor(Math.random()*5);
+            int randNumber = (int)Math.floor(Math.random()*5);
+            while(savedRandNumbers.contains(randNumber)) {
+                if (savedRandNumbers.size() == 5)
+                {
+                    Timer timer = new Timer();
+                    timer.schedule(new TimerTask() {
+                        public void run() {
+                            savedRandNumbers.clear();
+                        }
+                    }, 1500);
                 }
-                savedRandNumbers.add(randNumber);
-                starRun(randNumber);
+                randNumber = (int)Math.floor(Math.random()*5);
             }
+            savedRandNumbers.add(randNumber);
+            starRun(randNumber);
             Timer timer = new Timer();
             timer.schedule(new TimerTask() {
                 public void run() {
@@ -182,14 +147,14 @@ public class Game extends AppCompatActivity {
     private void starRun(int id) {
         if (!lose) {
             if (stars[id].getY() < layoutHeight) {
-                if (stars[id].getY() + ((85 * stars[id].getHeight())/100) > starShip.getTop() && stars[id].getLeft() < starShip.getX() + ((55 * starShip.getWidth())/100) && stars[id].getRight() > starShip.getX() + ((45 * starShip.getWidth())/100) && stars[id].getY() + ((45 * stars[id].getHeight())/100) < starShip.getBottom())
+                if (stars[id].getY() + ((40 * stars[id].getHeight())/100) > starShip.getTop() && stars[id].getLeft() < starShip.getX() + ((55 * starShip.getWidth())/100) && stars[id].getRight() > starShip.getX() + ((45 * starShip.getWidth())/100) && stars[id].getY() + ((45 * stars[id].getHeight())/100) < starShip.getBottom())
                 {
                     scoresValue += 10;
                     stars[id].setY((layoutHeight*14/100));
                     return;
                 }
                 Timer timer = new Timer();
-                if (!pauseClicked) stars[id].setY(stars[id].getY() + 20);
+                if (!lose) stars[id].setY(stars[id].getY() + 20);
                 timer.schedule(new TimerTask() {
                     public void run() {
                         starRun(id);
