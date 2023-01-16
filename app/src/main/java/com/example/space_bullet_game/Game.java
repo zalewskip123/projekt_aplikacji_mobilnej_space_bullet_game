@@ -157,7 +157,7 @@ public class Game extends AppCompatActivity {
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("score", scoresValue);
                             editor.apply();
-                            System.exit(0);
+                            if(lose) System.exit(0);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
