@@ -148,14 +148,12 @@ public class Game extends AppCompatActivity {
             @Override
             public void onClick(View view)
             {
-                SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
-                SharedPreferences.Editor editor = preferences.edit();
-                editor.putInt("score", scoresValue);
-                editor.apply();
+                //SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
+                //SharedPreferences.Editor editor = preferences.edit();
+                //editor.putInt("score", scoresValue);
+                //editor.apply();
 
-                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                startActivity(intent);
-                finish();
+
             }
         });
 
@@ -171,11 +169,15 @@ public class Game extends AppCompatActivity {
                             healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
                             gameOverSh.setY((layoutHeight*40)/100);
 
+                            SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("score", scoresValue);
+                            editor.apply();
+
                             lose = true;
                             Thread.sleep(3000);
                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                             startActivity(intent);
-                            finish();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
