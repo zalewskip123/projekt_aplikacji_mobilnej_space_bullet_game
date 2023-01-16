@@ -13,6 +13,7 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
     private Button changeMenuToCustom;
     private Button changeMenuToScoreboard;
     private Button changeMenuToCredits;
+    private Button exitGame;
 
     Integer spaceship;
 
@@ -36,6 +37,8 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
         changeMenuToCredits = (Button) findViewById(R.id.button3);
         changeMenuToCredits.setOnClickListener(this);
 
+        exitGame = (Button) findViewById(R.id.exitB);
+        exitGame.setOnClickListener(this);
     }
 
     @Override
@@ -64,6 +67,10 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
             Intent intent = new Intent(this, Menu_Credits.class);
             intent.putExtra("shipColor",spaceship);
             startActivity(intent);
+        }
+        else if(v.getId() == exitGame.getId())
+        {
+            this.finishAffinity();
         }
     }
 }
