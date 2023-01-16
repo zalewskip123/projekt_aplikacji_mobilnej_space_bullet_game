@@ -12,6 +12,7 @@ import android.widget.ImageView;
 public class Menu_Custom extends AppCompatActivity implements View.OnClickListener
 {
     private Button customExit;
+    Integer color;
 
     ImageView preview;
     ImageButton buttonWhite;
@@ -43,10 +44,57 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
         buttonYellow = findViewById(R.id.selectYellow);
         buttonOrange = findViewById(R.id.selectOrange);
 
+        //Preview save control
+        color = getIntent().getIntExtra("shipColor", 0);
+
+        switch (color) {
+            case (1):
+                preview.setImageResource(R.drawable.spaceship_white);
+                buttonWhite.setImageResource(R.drawable.secect);
+                break;
+            case (2):
+                preview.setImageResource(R.drawable.spaceship_gray);
+                buttonGray.setImageResource(R.drawable.secect);
+                break;
+            case (3):
+                preview.setImageResource(R.drawable.spaceship_black);
+                buttonBlack.setImageResource(R.drawable.secect);
+                break;
+            case (4):
+                preview.setImageResource(R.drawable.spaceship_purple);
+                buttonPurple.setImageResource(R.drawable.secect);
+                break;
+            case (5):
+                preview.setImageResource(R.drawable.spaceship_blue);
+                buttonBlue.setImageResource(R.drawable.secect);
+                break;
+            case (6):
+                preview.setImageResource(R.drawable.spaceship_green);
+                buttonGreen.setImageResource(R.drawable.secect);
+                break;
+            case (7):
+                preview.setImageResource(R.drawable.spaceship_red);
+                buttonRed.setImageResource(R.drawable.secect);
+                break;
+            case (8):
+                preview.setImageResource(R.drawable.spaceship_yellow);
+                buttonYellow.setImageResource(R.drawable.secect);
+                break;
+            case (9):
+                preview.setImageResource(R.drawable.spaceship_orange);
+                buttonOrange.setImageResource(R.drawable.secect);
+                break;
+            default:
+                preview.setImageResource(R.drawable.blank);
+                break;
+        }
+
+        // Button color change
         buttonWhite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view){
                 clear();
+                color = 1;
                 preview.setImageResource(R.drawable.spaceship_white);
                 buttonWhite.setImageResource(R.drawable.secect);
             }
@@ -56,6 +104,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 2;
                 preview.setImageResource(R.drawable.spaceship_gray);
                 buttonGray.setImageResource(R.drawable.secect);
             }
@@ -65,6 +114,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 3;
                 preview.setImageResource(R.drawable.spaceship_black);
                 buttonBlack.setImageResource(R.drawable.secect);
             }
@@ -74,6 +124,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 4;
                 preview.setImageResource(R.drawable.spaceship_purple);
                 buttonPurple.setImageResource(R.drawable.secect);
             }
@@ -83,6 +134,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 5;
                 preview.setImageResource(R.drawable.spaceship_blue);
                 buttonBlue.setImageResource(R.drawable.secect);
             }
@@ -92,6 +144,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 6;
                 preview.setImageResource(R.drawable.spaceship_green);
                 buttonGreen.setImageResource(R.drawable.secect);
             }
@@ -101,6 +154,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 7;
                 preview.setImageResource(R.drawable.spaceship_red);
                 buttonRed.setImageResource(R.drawable.secect);
             }
@@ -110,6 +164,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 8;
                 preview.setImageResource(R.drawable.spaceship_yellow);
                 buttonYellow.setImageResource(R.drawable.secect);
             }
@@ -119,12 +174,14 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
             @Override
             public void onClick(View view){
                 clear();
+                color = 9;
                 preview.setImageResource(R.drawable.spaceship_orange);
                 buttonOrange.setImageResource(R.drawable.secect);
             }
         });
     }
 
+    //Check mark clear
     private void clear(){
         buttonWhite.setImageResource(R.drawable.blank);
         buttonGray.setImageResource(R.drawable.blank);
@@ -143,6 +200,7 @@ public class Menu_Custom extends AppCompatActivity implements View.OnClickListen
         if(v.getId() == customExit.getId())
         {
             Intent intent = new Intent(this, Menu_main.class);
+            intent.putExtra("customColor",color);
             startActivity(intent);
         }
     }

@@ -14,12 +14,15 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
     private Button changeMenuToScoreboard;
     private Button changeMenuToCredits;
 
+    Integer spaceship;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_main);
+
+        spaceship = getIntent().getIntExtra("customColor", 7);
 
         changeMenuToPlay = (Button) findViewById(R.id.button7);
         changeMenuToPlay.setOnClickListener(this);
@@ -41,21 +44,25 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
         if(v.getId() == changeMenuToPlay.getId())
         {
             Intent intent = new Intent(this, Game.class);
+            intent.putExtra("shipColor",spaceship);
             startActivity(intent);
         }
         else if(v.getId() == changeMenuToCustom.getId())
         {
             Intent intent = new Intent(this, Menu_Custom.class);
+            intent.putExtra("shipColor",spaceship);
             startActivity(intent);
         }
         else if(v.getId() == changeMenuToScoreboard.getId())
         {
             Intent intent = new Intent(this, Menu_scoreboard.class);
+            intent.putExtra("shipColor",spaceship);
             startActivity(intent);
         }
         else if(v.getId() == changeMenuToCredits.getId())
         {
             Intent intent = new Intent(this, Menu_Credits.class);
+            intent.putExtra("shipColor",spaceship);
             startActivity(intent);
         }
     }
