@@ -1,19 +1,16 @@
 package com.example.space_bullet_game;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.ConsoleMessage;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -23,7 +20,7 @@ import java.util.TimerTask;
 
 public class Game extends AppCompatActivity {
 
-    private Button starShip;
+    private Button starShip, backToMenu;
     private int layoutWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
     private int layoutHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private Button[] stars = new Button[5];
@@ -93,6 +90,24 @@ public class Game extends AppCompatActivity {
         gameOverSh = (TextView) findViewById(R.id.gameOver);
         gameOverSh.setY(layoutHeight);
 
+        backToMenu = (Button) findViewById(R.id.backToMenu);
+        backToMenu.setY(layoutHeight);
+        backToMenu.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View view)
+            {
+                SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
+                SharedPreferences.Editor editor = preferences.edit();
+                editor.putInt("score", scoresValue);
+                editor.apply();
+
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
+
         threadShowHealthAndScores = new Thread() {
             @Override
             public void run() {
@@ -104,7 +119,12 @@ public class Game extends AppCompatActivity {
                         else {
                             healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
                             gameOverSh.setY((layoutHeight*40)/100);
+
                             lose = true;
+                            Thread.sleep(3000);
+                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -160,7 +180,7 @@ public class Game extends AppCompatActivity {
                         starRun(id);
                     }
                 }, 60);
-            } else if (savedRandNumbers.contains(id)) {
+            } else {
                 healthValue--;
                 stars[id].setY((layoutHeight*14/100));
             }

@@ -143,8 +143,8 @@
 
     <TextView
         android:id="@+id/gameOver"
-        android:layout_width="295dp"
-        android:layout_height="102dp"
+        android:layout_width="290dp"
+        android:layout_height="66dp"
         android:text="GAME OVER"
         android:textAlignment="center"
         android:textSize="48sp"
@@ -153,5 +153,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/backToMenu"
+        android:layout_width="129dp"
+        android:layout_height="42dp"
+        android:background="#A3FFFFFF"
+        android:text="Return"
+        android:visibility="visible"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.628" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
