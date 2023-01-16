@@ -11,11 +11,15 @@ public class Menu_scoreboard extends AppCompatActivity implements View.OnClickLi
 {
     private Button changeScoreboardToMenu;
 
+    Integer color;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_scoreboard);
+
+        color = getIntent().getIntExtra("shipColor",0);
 
         changeScoreboardToMenu = (Button) findViewById(R.id.button1);
         changeScoreboardToMenu.setOnClickListener(this);
@@ -27,6 +31,7 @@ public class Menu_scoreboard extends AppCompatActivity implements View.OnClickLi
         if(v.getId() == changeScoreboardToMenu.getId())
         {
             Intent intent = new Intent(this, Menu_main.class);
+            intent.putExtra("customColor",color);
             startActivity(intent);
         }
     }

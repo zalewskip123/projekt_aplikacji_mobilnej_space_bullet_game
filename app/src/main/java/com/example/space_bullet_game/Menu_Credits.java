@@ -11,10 +11,14 @@ public class Menu_Credits extends AppCompatActivity implements View.OnClickListe
 {
     private Button creditsExit;
 
+    Integer color;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_credits);
+
+        color = getIntent().getIntExtra("shipColor",0);
 
         creditsExit = (Button) findViewById(R.id.exitCredits);
         creditsExit.setOnClickListener(this);
@@ -26,6 +30,7 @@ public class Menu_Credits extends AppCompatActivity implements View.OnClickListe
         if(v.getId() == creditsExit.getId())
         {
             Intent intent = new Intent(this, Menu_main.class);
+            intent.putExtra("customColor",color);
             startActivity(intent);
         }
     }

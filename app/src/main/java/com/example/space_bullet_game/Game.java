@@ -33,6 +33,8 @@ public class Game extends AppCompatActivity {
     private int scoresValue = 0, healthValue = 3;
     private Thread threadShowHealthAndScores;
 
+    Integer spaceshipColor;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,10 +48,59 @@ public class Game extends AppCompatActivity {
         stars[4] = (Button) findViewById(R.id.star5);
 
         //Starship player control
+        spaceshipColor = getIntent().getIntExtra("shipColor",0);
         starShip = (Button) findViewById(R.id.bShip);
-        Drawable icon = getResources().getDrawable(R.drawable.spaceship_green);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-            starShip.setForeground(icon);
+        switch (spaceshipColor) {
+            case (1):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_white));
+                }
+                break;
+            case (2):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_gray));
+                }
+                break;
+            case (3):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_black));
+                }
+                break;
+            case (4):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_purple));
+                }
+                break;
+            case (5):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_blue));
+                }
+                break;
+            case (6):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_green));
+                }
+                break;
+            case (7):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_red));
+                }
+                break;
+            case (8):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_yellow));
+                }
+                break;
+            case (9):
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.spaceship_orange));
+                }
+                break;
+            default:
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    starShip.setForeground(getDrawable(R.drawable.blank));
+                }
+                break;
         }
         starShip.setOnTouchListener(new View.OnTouchListener() {
             float dX;
