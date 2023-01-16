@@ -20,7 +20,7 @@ import java.util.TimerTask;
 
 public class Game extends AppCompatActivity {
 
-    private Button starShip, backToMenu;
+    private Button starShip;
     private int layoutWidth = Resources.getSystem().getDisplayMetrics().widthPixels;
     private int layoutHeight = Resources.getSystem().getDisplayMetrics().heightPixels;
     private Button[] stars = new Button[5];
@@ -128,8 +128,6 @@ public class Game extends AppCompatActivity {
                             }
                         }
                         break;
-                    default:
-                        return false;
                 }
                 return false;
             }
@@ -140,22 +138,6 @@ public class Game extends AppCompatActivity {
 
         gameOverSh = (TextView) findViewById(R.id.gameOver);
         gameOverSh.setY(layoutHeight);
-
-        backToMenu = (Button) findViewById(R.id.backToMenu);
-        backToMenu.setY(layoutHeight);
-        backToMenu.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View view)
-            {
-                //SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
-                //SharedPreferences.Editor editor = preferences.edit();
-                //editor.putInt("score", scoresValue);
-                //editor.apply();
-
-
-            }
-        });
 
         threadShowHealthAndScores = new Thread() {
             @Override
@@ -169,15 +151,13 @@ public class Game extends AppCompatActivity {
                             healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
                             gameOverSh.setY((layoutHeight*40)/100);
 
+                            lose = true;
+                            Thread.sleep(3000);
                             SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("score", scoresValue);
                             editor.apply();
-
-                            lose = true;
-                            Thread.sleep(3000);
-                            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                            startActivity(intent);
+                            System.exit(0);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
