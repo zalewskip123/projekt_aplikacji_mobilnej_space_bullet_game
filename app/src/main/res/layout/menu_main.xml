@@ -30,7 +30,7 @@
         android:fontFamily="@font/prstart"
         android:textColor="#0BEF17"
         android:background="@drawable/blank"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/exitB"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/exitB"
         android:layout_width="65dp"
         android:layout_height="80dp"
         android:layout_marginBottom="4dp"

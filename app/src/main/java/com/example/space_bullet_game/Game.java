@@ -1,19 +1,16 @@
 package com.example.space_bullet_game;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.view.MotionEvent;
 import android.view.View;
-import android.webkit.ConsoleMessage;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -131,8 +128,6 @@ public class Game extends AppCompatActivity {
                             }
                         }
                         break;
-                    default:
-                        return false;
                 }
                 return false;
             }
@@ -155,7 +150,14 @@ public class Game extends AppCompatActivity {
                         else {
                             healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
                             gameOverSh.setY((layoutHeight*40)/100);
+
                             lose = true;
+                            Thread.sleep(3000);
+                            SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
+                            SharedPreferences.Editor editor = preferences.edit();
+                            editor.putInt("score", scoresValue);
+                            editor.apply();
+                            System.exit(0);
                         }
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -211,7 +213,7 @@ public class Game extends AppCompatActivity {
                         starRun(id);
                     }
                 }, 60);
-            } else if (savedRandNumbers.contains(id)) {
+            } else {
                 healthValue--;
                 stars[id].setY((layoutHeight*14/100));
             }

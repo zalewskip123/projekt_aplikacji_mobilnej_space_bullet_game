@@ -143,8 +143,8 @@
 
     <TextView
         android:id="@+id/gameOver"
-        android:layout_width="295dp"
-        android:layout_height="102dp"
+        android:layout_width="290dp"
+        android:layout_height="66dp"
         android:text="GAME OVER"
         android:textAlignment="center"
         android:textSize="48sp"
