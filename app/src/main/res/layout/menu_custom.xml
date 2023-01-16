@@ -15,6 +15,7 @@
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
+        android:background="@drawable/blank"
         app:icon="@android:drawable/ic_delete"
         app:iconPadding="0dp"
         app:iconTint="@color/design_default_color_error"
