@@ -11,15 +11,17 @@
         android:layout_height="64dp"
         android:background="#00000000"
         android:backgroundTint="#000000"
+        android:foreground="@drawable/x"
         android:insetLeft="4dp"
-        app:icon="?attr/homeAsUpIndicator"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
         app:iconTint="#000000"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.968"
+        app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.976"
+        app:layout_constraintVertical_bias="0.991"
         tools:ignore="SpeakableTextPresentCheck" />
 
     <TextView
