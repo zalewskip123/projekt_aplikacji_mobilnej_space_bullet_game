@@ -91,7 +91,7 @@ public class Menu_scoreboard extends AppCompatActivity implements View.OnClickLi
         }
         else if(v.getId() == buttonResetScoreboard.getId())
         {
-            //reset score on exit
+            //reset score on reset button press
             ((TextView) findViewById(R.id.score1)).setText("00000");
             ((TextView) findViewById(R.id.score2)).setText("00000");
             ((TextView) findViewById(R.id.score3)).setText("00000");
