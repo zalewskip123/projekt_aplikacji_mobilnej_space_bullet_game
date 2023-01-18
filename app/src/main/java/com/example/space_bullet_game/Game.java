@@ -2,6 +2,7 @@ package com.example.space_bullet_game;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
@@ -139,6 +140,9 @@ public class Game extends AppCompatActivity {
         gameOverSh = (TextView) findViewById(R.id.gameOver);
         gameOverSh.setY(layoutHeight);
 
+        SharedPreferences prefs = this.getSharedPreferences("results", Context.MODE_PRIVATE);
+        String gameScore = prefs.getString("score", null);
+
         threadShowHealthAndScores = new Thread() {
             @Override
             public void run() {
@@ -153,10 +157,16 @@ public class Game extends AppCompatActivity {
 
                             lose = true;
                             Thread.sleep(3000);
-                            SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
-                            SharedPreferences.Editor editor = preferences.edit();
-                            editor.putInt("score", scoresValue);
-                            editor.apply();
+
+                            //save score data
+                            SharedPreferences sh;
+                            sh = getSharedPreferences("results", Context.MODE_PRIVATE);
+                            SharedPreferences.Editor editor = sh.edit();
+                            String tempScore = gameScore;
+                            if (tempScore == null) tempScore = "00000";
+                            editor.putString("score", tempScore+";"+String.format("%05d",scoresValue));
+                            editor.commit();
+
                             if(lose) System.exit(0);
                         }
                     } catch (Exception e) {
