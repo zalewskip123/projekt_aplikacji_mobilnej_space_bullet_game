@@ -10,12 +10,15 @@
         android:id="@+id/exitCredits"
         android:layout_width="65dp"
         android:layout_height="80dp"
+        android:background="@drawable/blank"
         android:backgroundTint="#00FFFFFF"
+        android:foreground="@drawable/x"
         android:insetLeft="0dp"
         android:insetTop="0dp"
         android:insetRight="0dp"
         android:insetBottom="0dp"
-        app:icon="@android:drawable/ic_delete"
+        android:scaleX="0.7"
+        android:scaleY="0.7"
         app:iconPadding="0dp"
         app:iconTint="@color/design_default_color_error"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -23,7 +26,7 @@
         app:layout_constraintHorizontal_bias="0.953"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.975" />
+        app:layout_constraintVertical_bias="0.993" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -53,7 +56,7 @@
 
     <TextView
         android:id="@+id/author1"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="70dp"
         android:layout_marginTop="20dp"
         android:fontFamily="@font/prstart"
@@ -68,7 +71,7 @@
 
     <TextView
         android:id="@+id/author2"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="70dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/prstart"
@@ -85,7 +88,7 @@
 
     <TextView
         android:id="@+id/author3"
-        android:layout_width="300dp"
+        android:layout_width="320dp"
         android:layout_height="70dp"
         android:layout_marginTop="100dp"
         android:fontFamily="@font/prstart"
