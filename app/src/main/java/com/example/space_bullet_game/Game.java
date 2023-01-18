@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -29,6 +30,7 @@ public class Game extends AppCompatActivity {
     private TextView scoresSh, healthSh, gameOverSh;
     private int scoresValue = 0, healthValue = 3;
     private Thread threadShowHealthAndScores;
+    private ImageView gameOverIMG;
 
     Integer spaceshipColor;
 
@@ -138,6 +140,8 @@ public class Game extends AppCompatActivity {
         healthSh = (TextView) findViewById(R.id.healthView);
         gameOverSh = (TextView) findViewById(R.id.gameOver);
         gameOverSh.setY(layoutHeight);
+        gameOverIMG = (ImageView) findViewById(R.id.gameOverImage);
+        gameOverIMG.setY(layoutHeight);
         threadShowHealthAndScores = new Thread() {
             @Override
             public void run() {
@@ -148,7 +152,8 @@ public class Game extends AppCompatActivity {
                         if (healthValue > 0) healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
                         else {
                             healthSh.setText("Lives " + Integer.toString(healthValue) + "/3");
-                            gameOverSh.setY((layoutHeight*40)/100);
+                            gameOverSh.setY((layoutHeight*47)/100);
+                            gameOverIMG.setY((layoutHeight*40)/100);
 
                             lose = true;
                             Thread.sleep(5000);
@@ -203,10 +208,14 @@ public class Game extends AppCompatActivity {
                 {
                     scoresValue += 10;
                     stars[id].setY((layoutHeight*14/100));
+                    stars[id].setRotation(0);
                     return;
                 }
                 Timer timer = new Timer();
-                if (!lose) stars[id].setY(stars[id].getY() + 20);
+                if (!lose) {
+                    stars[id].setY(stars[id].getY() + 20);
+                    stars[id].setRotation(stars[id].getRotation() + 30);
+                }
                 timer.schedule(new TimerTask() {
                     public void run() {
                         starRun(id);
@@ -215,6 +224,7 @@ public class Game extends AppCompatActivity {
             } else {
                 healthValue--;
                 stars[id].setY((layoutHeight*14/100));
+                stars[id].setRotation(0);
             }
         }
     }
