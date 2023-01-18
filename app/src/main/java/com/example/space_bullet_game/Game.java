@@ -44,7 +44,7 @@ public class Game extends AppCompatActivity {
         stars[3] = (Button) findViewById(R.id.star4);
         stars[4] = (Button) findViewById(R.id.star5);
 
-        //Starship player control
+        //Starship player control and color ship
         spaceshipColor = getIntent().getIntExtra("shipColor",0);
         starShip = (Button) findViewById(R.id.bShip);
         switch (spaceshipColor) {
@@ -133,12 +133,11 @@ public class Game extends AppCompatActivity {
             }
         });
 
+        //Display scores, health and game over
         scoresSh = (TextView) findViewById(R.id.scoresView);
         healthSh = (TextView) findViewById(R.id.healthView);
-
         gameOverSh = (TextView) findViewById(R.id.gameOver);
         gameOverSh.setY(layoutHeight);
-
         threadShowHealthAndScores = new Thread() {
             @Override
             public void run() {
@@ -152,7 +151,7 @@ public class Game extends AppCompatActivity {
                             gameOverSh.setY((layoutHeight*40)/100);
 
                             lose = true;
-                            Thread.sleep(3000);
+                            Thread.sleep(5000);
                             SharedPreferences preferences  = getSharedPreferences("PREFS", 0);
                             SharedPreferences.Editor editor = preferences.edit();
                             editor.putInt("score", scoresValue);
