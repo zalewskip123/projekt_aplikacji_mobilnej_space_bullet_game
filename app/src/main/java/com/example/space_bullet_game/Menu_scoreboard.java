@@ -19,7 +19,7 @@ import java.util.List;
 
 public class Menu_scoreboard extends AppCompatActivity implements View.OnClickListener
 {
-    private Button changeScoreboardToMenu;
+    private Button changeScoreboardToMenu, buttonResetScoreboard;
     private List<String> scoreSummary = new ArrayList<>();
 
     Integer color;
@@ -34,6 +34,10 @@ public class Menu_scoreboard extends AppCompatActivity implements View.OnClickLi
 
         changeScoreboardToMenu = (Button) findViewById(R.id.button1);
         changeScoreboardToMenu.setOnClickListener(this);
+
+        buttonResetScoreboard = (Button) findViewById(R.id.buttonResetScore);
+        buttonResetScoreboard.setOnClickListener(this);
+
 
         //get saved scores data from Game activity
         SharedPreferences prefs = this.getSharedPreferences("results", Context.MODE_PRIVATE);
@@ -84,6 +88,21 @@ public class Menu_scoreboard extends AppCompatActivity implements View.OnClickLi
             Intent intent = new Intent(this, Menu_main.class);
             intent.putExtra("customColor",color);
             startActivity(intent);
+        }
+        else if(v.getId() == buttonResetScoreboard.getId())
+        {
+            //reset score on exit
+            ((TextView) findViewById(R.id.score1)).setText("00000");
+            ((TextView) findViewById(R.id.score2)).setText("00000");
+            ((TextView) findViewById(R.id.score3)).setText("00000");
+            ((TextView) findViewById(R.id.score4)).setText("00000");
+            ((TextView) findViewById(R.id.score5)).setText("00000");
+
+            SharedPreferences sh;
+            sh = getSharedPreferences("results", Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = sh.edit();
+            editor.putString("score", null);
+            editor.commit();
         }
     }
 }
