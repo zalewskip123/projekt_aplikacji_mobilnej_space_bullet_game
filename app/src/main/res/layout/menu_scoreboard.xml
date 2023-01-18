@@ -25,6 +25,25 @@
         app:layout_constraintVertical_bias="0.991"
         tools:ignore="SpeakableTextPresentCheck" />
 
+    <Button
+        android:id="@+id/buttonResetScore"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="#00000000"
+        android:backgroundTint="#000000"
+        android:foreground="@drawable/reset_icon"
+        android:insetLeft="4dp"
+        android:scaleX="0.75"
+        android:scaleY="0.75"
+        app:iconTint="#000000"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.046"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.991"
+        tools:ignore="SpeakableTextPresentCheck" />
+
     <TextView
         android:id="@+id/textView"
         android:layout_width="400dp"

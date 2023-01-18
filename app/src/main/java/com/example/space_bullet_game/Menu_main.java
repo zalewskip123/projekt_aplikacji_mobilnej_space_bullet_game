@@ -72,13 +72,6 @@ public class Menu_main extends AppCompatActivity implements View.OnClickListener
         }
         else if(v.getId() == exitGame.getId())
         {
-            //reset scores on exit
-            SharedPreferences sh;
-            sh = getSharedPreferences("results", Context.MODE_PRIVATE);
-            SharedPreferences.Editor editor = sh.edit();
-            editor.putString("score", null);
-            editor.commit();
-
             this.finishAffinity();
         }
     }
