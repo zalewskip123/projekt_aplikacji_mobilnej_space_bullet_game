@@ -40,14 +40,14 @@ public class Game extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.game);
 
-        //Stars
+        //stars
         stars[0] = (Button) findViewById(R.id.star1);
         stars[1] = (Button) findViewById(R.id.star2);
         stars[2] = (Button) findViewById(R.id.star3);
         stars[3] = (Button) findViewById(R.id.star4);
         stars[4] = (Button) findViewById(R.id.star5);
 
-        //Starship player control and color ship
+        //starship player control and color ship
         spaceshipColor = getIntent().getIntExtra("shipColor",0);
         starShip = (Button) findViewById(R.id.bShip);
         switch (spaceshipColor) {
@@ -136,7 +136,7 @@ public class Game extends AppCompatActivity {
             }
         });
 
-        //Display scores, health and game over
+        //display scores, health and game over
         scoresSh = (TextView) findViewById(R.id.scoresView);
         healthSh = (TextView) findViewById(R.id.healthView);
         gameOverSh = (TextView) findViewById(R.id.gameOver);
@@ -182,7 +182,7 @@ public class Game extends AppCompatActivity {
         threadShowHealthAndScores.start();
     }
 
-    //Generate random number of star
+    //generate random number of star
     private void randStar() {
         if (!lose) {
             int randNumber = (int)Math.floor(Math.random()*5);
@@ -209,7 +209,7 @@ public class Game extends AppCompatActivity {
         }
     }
 
-    //Movement of star
+    //movement of star
     private void starRun(int id) {
         if (!lose) {
             if (stars[id].getY() < layoutHeight) {
